@@ -514,7 +514,7 @@ Parsec is provided under BSD-style license as below:
 
 - BanchaScript is a AltJS, a programming language compiled into JavaScript source code.
 
-hello.bancha
+[hello.bancha](example/bancha/hello.bancha)
 ```
 function log(s) {
   native "console.log(s)";
@@ -526,7 +526,7 @@ to run the sample without installing
 deno run -A https://taisukef.github.io/Parsect/example/bancha/banchac.js hello.bancha
 ```
 
-to run the Geo3x3 sample
+to run the Geo3x3 sample ([Geo3x3.bancha](example/bancha/Geo3x3.bancha), [simple_geo3x3.bancha](example/bancha/simple_geo3x3.bancha))
 ```
 cd example/bancha
 deno run -A banchac.js Geo3x3.bancha simple_geo3x3.bancha
