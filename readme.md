@@ -521,11 +521,16 @@ function log(s) {
 }
 log("Hello BanchaScript!");
 ```
-to run sample without install
+to run the sample without installing
 ```
 deno run -A https://taisukef.github.io/Parsect/example/bancha/banchac.js hello.bancha
 ```
 
+to run the Geo3x3 sample
+```
+cd example/bancha
+deno run -A banchac.js Geo3x3.bancha simple_geo3x3.bancha
+```
 
 ## Contact
 
