@@ -4,7 +4,7 @@
 // See bancha.html for sample soruce codes.
 //
 
-import { Parsect } from "../../Parsect.js";
+import { Parsect } from "https://taisukef.github.io/Parsect/Parsect.js";
 
 const p = Parsect;
 

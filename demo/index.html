@@ -236,30 +236,29 @@ log("head(tail(xs)) = " + head(tail(xs)));
             <textarea id="output" readonly></textarea>
         </section>
 
-        <script src="../../src/parsect.js"></script>
-        <script src="bancha.js"></script>
         <script type="module">
-            import { runBancha } from "./bundle.js";
+            import { transpile, run } from "./bundle.js";
 
-            var lib      = document.getElementById("lib");
-            var source   = document.getElementById("source");
-            var compiled = document.getElementById("compiled");
-            var output   = document.getElementById("output");
-            
-            const compile = () => {
+            const exec = () => {
                 const srcs = [
                     { title: "lib", source: lib.value },
                     { title: "source", source: source.value },
                 ];
-                const [errText, compiledText, outputText] = runBancha(srcs);
-                error.value = errText;
-                compiled.value = compiledText;
-                output.value = outputText;
+                try {
+                    const compiledText = transpile(srcs);
+                    compiled.value = compiledText;
+                    error.value = "";
+                    const outputText = run(compiledText);
+                    output.value = outputText;
+                } catch (e) {
+                    compiled.value = "";
+                    error.value = e.message;
+                }
             };
 
-            source.onkeyup = compile;
-            compile();
+            source.onkeyup = exec;
+            exec();
         </script>
 
     </body>
-</html>    
+</html>
