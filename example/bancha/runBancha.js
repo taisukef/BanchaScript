@@ -1,6 +1,10 @@
 import * as bancha from "./bancha.ts";
 
 export const runBancha = (srcs) => {
+  // Initialize fields
+  const error = {};
+  error.value = "";
+
   const compileScript = (scope, title, source) => {
     const start = performance.now();
     const reply = bancha.compile(scope, source);
@@ -14,38 +18,30 @@ export const runBancha = (srcs) => {
       const pos = reply.state.getRowColumn();
       error.value += "[" + title + "] (" + (pos.raw + 1) + "," + (pos.column + 1) + "): expected " + reply.expected() + "\n";
       error.value += "[" + title + "] " + timeString + "\n";
+      console.log(pos);
       return "";
     }
   };
 
-  // Initialize fields
-  const error = {};
-  error.value = "";
-
   // Compile
-  const compiled = {};
   let compiledText = "";
   const scope = new bancha.Scope();
   for (const src of srcs) {
     compiledText += compileScript(scope, src.title, src.source);
   }
-  compiled.value = compiledText;
   //console.log("compiledText: ", compiledText);
   //console.log("error: ", error.value);
 
   // Evaluation
   let outputText = "";
-  (function() {
-    try {
-      const bk = window.console;
-      window.console = { log: (x) => outputText += x + "\n" };
-      eval(compiledText);
-      window.console = bk;
-    } catch (e) {
-      console.log(e);
-      outputText += e.message;
-    }
-  }());
-  //console.log(outputText);
+  try {
+    const bk = window.console;
+    window.console = { log: (x) => outputText += x + "\n" };
+    eval(compiledText);
+    window.console = bk;
+  } catch (e) {
+    console.log(e);
+    outputText += e.message;
+  }
   return [error.value, compiledText, outputText];
 };

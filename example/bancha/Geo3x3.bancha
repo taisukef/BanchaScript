@@ -1,3 +1,31 @@
+function log(x) {
+  native "console.log(x)";    
+}
+
+operator ++ prefix  1 = "++{0}"; 
+operator -- prefix  1 = "--{0}";
+operator ++ postfix 1 = "{0}++";
+operator -- postfix 1 = "{0}--";
+operator -  prefix  1 = "-{0}";
+operator +  prefix  1 = "+{0}";
+
+operator *  infixl  2 = "({0}*{1})"; 
+operator /  infixl  2 = "({0}/{1})";
+operator %  infixl  2 = "({0}%{1})";
+
+operator +  infixl  3 = "({0}+{1})";
+operator -  infixl  3 = "({0}-{1})";
+
+operator <  infixl  5 = "({0}<{1})";
+operator >  infixl  5 = "({0}>{1})";
+operator <= infixl  5 = "({0}<={1})";
+operator >= infixl  5 = "({0}>={1})";
+
+operator == infixl  5 = "({0}=={1})";
+operator != infixl  5 = "({0}!={1})";
+
+operator := infixl 14 = "{0}={1}";
+
 function floor(n) {
   return native "Math.floor(n)";
 }
@@ -10,8 +38,6 @@ function indexOf(s, key) {
 function length(s) {
   return native "s.length";
 }
-operator % infixl 2 = "({0}%{1})";
-
 function encode(lat, lng, level) {
   var res = "E";
   if (lng < 0.0) {
