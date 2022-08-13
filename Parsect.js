@@ -916,11 +916,15 @@ export const Parsect = {};
 
         var fraction = seq(function (s) {
             s(string('.'));
-            var digits = s(label("fraction", many1(Parsect.digit)));
-            function op(d, f) {
-                return (f + d) / 10.0;
+            const digits = s(label("fraction", many1(Parsect.digit)));
+            if (!s.success) {
+                return undefined;
             }
-            return s.success ? digits.reduce(op, 0.0) : undefined;
+            let n = 0;
+            for (let i = 0; i < digits.length; i++) {
+                n += parseInt(digits[i]) / (10 ** (i + 1));
+            }
+            return n;
         });
 
         function fractExponent(n) {
