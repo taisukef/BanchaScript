@@ -1,0 +1,5 @@
+function log(s) {
+  native "console.log(s)";
+}
+log("Hello BanchaScript!");
+
