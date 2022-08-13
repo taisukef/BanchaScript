@@ -513,6 +513,7 @@ Parsec is provided under BSD-style license as below:
 ## BanchaScript
 
 - BanchaScript is a AltJS, a programming language compiled into JavaScript source code.
+- [DEMO - BanchaScript Playground](https://taisukef.github.io/Parsect/example/bancha/bancha.html)
 
 [hello.bancha](example/bancha/hello.bancha)
 ```
