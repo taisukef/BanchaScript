@@ -1,0 +1,115 @@
+// Comments //////////////////////////////////////////////////////////////////////////////////////////
+
+// This is a line comment. 行コメント
+
+/*
+This is a block comment. 複数行コメント
+*/
+
+// Nest-able multiline comment. ネストできるブロックコメント
+/* This's /* comment */ text. */
+
+
+
+// Variables //////////////////////////////////////////////////////////////////////////////////////
+
+// Varialble declaration. 変数の宣言
+var x = 1 + 2 * 3;
+
+
+
+
+// Functions ///////////////////////////////////////////////////////////
+
+//Function declaration. 関数の定義
+function add(x, y){
+    return x + y;
+}
+function sub(x, y){
+    return x - y;
+}
+
+// Native function declaration. ネイティブな関数の定義
+function foldl(f, x, xs){
+    return native "xs.reduce(f, x)";    // nativeディレクティブで出力を直接操作
+}
+
+// Arrow function expression. アロー関数式
+var double = x => x * 2;
+
+// Infix operator as a function. 演算子を括弧で囲むと関数になる
+var mul = (*);
+log("mul(5, 6) = " + mul(5, 6));
+
+// Function as infix operator 関数の中置記法
+// Like Haskell, a backquoted identifier is a infix operator.  バッククォートで囲むことで、関数を中置演算子として書くことができます
+log( 100 `add` 200 );
+
+// Partial Application of Function 関数の部分適用 
+// Pass the second parameter only. 先にふたつめの引数を渡す
+var f = sub(,10);
+
+// Then, pass a first parameter. 後から残りの引数を渡す
+log(f(20));
+
+
+
+// Operators ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Declaration of an operator. 演算子の定義
+operator |^_^|< prefix 5 = log; 
+
+// Operator application. 演算子の適用
+|^_^|< "It's me! わたしです。";
+
+// Operator as a function. 演算子を関数のように扱う
+log("(*)(3,2) = " + (*)(3,2));
+
+// Section, Partial application of operators. 演算子の片方の辺にのみ適用できる
+log("(* 2)(3) = " + (* 2)(3));
+log("(2 *)(3) = " + (2 *)(3));
+
+// Note: (+ 1 * 1) is valid in Haskell, however, in BanchaScript, you need to write it as (+ (1 * 1))
+// 注意: Haskell では　(+ 1 * 1) のように書けますが、BanchaScriptでは (+ (1 * 1)) のように括弧で囲む必要があります(パーサの都合) 
+log( (+ (1 * 1))(4) );
+
+// Arrays //////////////////////////////////////////////////////////////////////////////////////////////
+
+// Array Literal. 配列リテラル
+var xs = [1, 2, 3, 4, 5];
+
+// Accessing to the array with "!!" operator. !! 演算子による配列へのアクセス
+log("xs[2] = " + xs !! 2);
+
+
+
+
+// Control flow ///////////////////////////////////////////////////////////////////////////////////
+
+// For statement. for文
+var m = 0;
+for(var i = 0; i < 10; i++){
+    m := m + i;
+}
+log("Sum of {0, 1, ..., 10} = " + m);
+
+// If　statement. If文
+function factorial(k){
+    // if 文
+    if(k < 1){
+        return 1;
+    }else{
+        return k * factorial(k - 1);   
+    }
+}
+
+// Function application. 関数呼び出し
+log("factorial(10) = " + factorial(10));
+
+
+// Lists /////////////////////////////////////////////////////
+
+var xs = 0 : 1 : 2 : 3 : null;
+
+log("length(xs)     = " + length(xs));
+log("head(tail(xs)) = " + head(tail(xs)));

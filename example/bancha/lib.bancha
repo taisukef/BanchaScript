@@ -1,0 +1,51 @@
+// This is BanchaScript's standard library. 
+// In BanchaScript, all operators are user-defined.
+// You can declare any operators you want.
+operator ++ prefix  1 = "++{0}"; 
+operator -- prefix  1 = "--{0}";
+operator ++ postfix 1 = "{0}++";
+operator -- postfix 1 = "{0}--";
+operator -  prefix  1 = "-{0}";
+operator +  prefix  1 = "+{0}";
+
+// Array Operations
+operator :  infixr  1 = "{head:{0},tail:{1}}";
+operator !! infixl  1 = "{0}[{1}]";
+
+// Function Opeations
+operator . infixr   1 = "(function(){return {0}({1}.apply(undefined,arguments))})";
+
+// Numerical operations
+operator *  infixl  2 = "({0}*{1})"; 
+operator /  infixl  2 = "({0}/{1})";
+
+operator +  infixl  3 = "({0}+{1})";
+operator -  infixl  3 = "({0}-{1})";
+
+operator  < infixl 5 = "({0} <{1})";
+operator  > infixl 5 = "({0} >{1})";
+operator  <= infixl 5 = "({0} <={1})";
+operator  >= infixl 5 = "({0} >={1})";
+
+operator == infixl  5 = "({0}=={1})";
+operator != infixl  5 = "({0}!={1})";
+
+operator := infixl 14 = "{0}={1}";
+
+function head(xs){
+    return native "xs.head";
+}
+function tail(xs){
+    return native "xs.tail";
+}
+function length(xs){
+    if(xs == null){
+        return 0;
+    }else{
+        return 1 + length(tail(xs));
+    }
+}
+
+function log(x){
+    native "console.log(x)";    
+}
