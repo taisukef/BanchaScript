@@ -6,7 +6,7 @@
 - [supports user-defined operators (演算子のユーザ定義が可能)](https://qiita.com/KDKTN/items/a151d8d003a62c7b2ca3#10%E5%88%86%E3%81%8F%E3%82%89%E3%81%84%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8Bbanchascript%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E5%AE%9A%E7%BE%A9%E6%BC%94%E7%AE%97%E5%AD%90)
 - [DEMO - BanchaScript Playground](https://taisukef.github.io/BanchaScript/demo/)
 - [100行で書く俺様プログラミング言語コンパイラAltJS編 - Qiita](https://qiita.com/KDKTN/items/a151d8d003a62c7b2ca3)
-- dependency: [Parsect : Parser Combinator for JavaScript/TypeScript](https://github.com/taisukef/Parsect)
+- dependency: [Parsect : Parser Combinator for JavaScript/TypeScript](https://github.com/code4fukui/Parsect)
 
 ## Usage
 
