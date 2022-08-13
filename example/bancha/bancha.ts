@@ -1,5 +1,3 @@
-/// <reference path="../../src/parsect.ts" />
-
 // Sample program: BanchaScript compiler
 //
 // BanchaScript is a AltJS, a programming language compiled into JavaScript source code.

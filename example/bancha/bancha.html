@@ -238,54 +238,24 @@ log("head(tail(xs)) = " + head(tail(xs)));
 
         <script src="../../src/parsect.js"></script>
         <script src="bancha.js"></script>
-        <script>
+        <script type="module">
+            import { runBancha } from "./bundle.js";
+
             var lib      = document.getElementById("lib");
             var source   = document.getElementById("source");
             var compiled = document.getElementById("compiled");
             var output   = document.getElementById("output");
             
-            function compile(){
-                "use strict";
-                
-                function compileScript(scope, title, source){
-                    var start = performance.now();
-                    var reply = bancha.compile(scope, source);
-                    var time = (performance.now() - start) * 0.001;
-                    var timeString = "time: " + /[0-9]+(\.[0-9]{1,3})?/.exec(time.toString())[0] + "sec.";
-                    if(reply.success){
-                        error.value += "[" + title + "] Compiled successfully. \n";
-                        error.value += "[" + title + "] " + timeString + "\n";
-                        return reply.value;
-                    }else{
-                        var pos = reply.state.getRowColumn();
-                        error.value += "[" + title + "] (" + (pos.raw + 1) + "," + (pos.column + 1) + "): expected " + reply.expected() + "\n";
-                        error.value += "[" + title + "] " + timeString + "\n";
-                        return "";
-                    }
-                }
-
-                // Initialize fields
-                error.value = "";
-
-                // Compile
-                var compiledText = "";
-                var scope = new bancha.Scope();
-                compiledText += compileScript(scope, "stdlib", lib.value);
-                compiledText += compileScript(scope, "app", source.value);
+            const compile = () => {
+                const srcs = [
+                    { title: "lib", source: lib.value },
+                    { title: "source", source: source.value },
+                ];
+                const [errText, compiledText, outputText] = runBancha(srcs);
+                error.value = errText;
                 compiled.value = compiledText;
-
-                // Evaluation
-                var outputText = "";
-                (function(){
-                    try{
-                        var console = { log: function(x){ outputText += x + "\n"; }};
-                        eval(compiledText);
-                    }catch(e){
-                        console.log(e);
-                    }
-                }());
                 output.value = outputText;
-            }
+            };
 
             source.onkeyup = compile;
             compile();

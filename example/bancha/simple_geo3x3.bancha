@@ -1,0 +1,6 @@
+function log(x) {
+  native "console.log(x)";    
+}
+log(encode(35.65858, 139.745433, 14));
+log(decode("E9139659937288"));
+log(decode("W9"));
